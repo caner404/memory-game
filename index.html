@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Frontend Mentor | Memory game</title>
+    <script type="module" defer src="js/controller.js"></script>
+  </head>
+  <body>
+    <!-- Game setup start -->
+    <div class="container">
+      <h1 class="game-title">memory</h1>
+      <div class="menu">
+        <div class="menu__theme">
+          <h2 class="menu__header">Select Theme</h2>
+          <div class="menu__buttons">
+            <button class="btn btn--active menu__button--theme">Numbers</button>
+            <button class="btn menu__button--theme">Icons</button>
+          </div>
+        </div>
+        <div class="menu__players">
+          <h2 class="menu__header">Numbers of Players</h2>
+          <div class="menu__buttons">
+            <button class="btn btn--active menu__button--player">1</button>
+            <button class="btn menu__button--player">2</button>
+            <button class="btn menu__button--player">3</button>
+            <button class="btn menu__button--player">4</button>
+          </div>
+        </div>
+        <div class="menu__grid">
+          <h2 class="menu__header">Grid Size</h2>
+          <div class="menu__buttons">
+            <button
+              data-grid-size="16"
+              class="btn--active btn menu__button_grid"
+            >
+              4x4
+            </button>
+            <button data-grid-size="36" class="btn menu__button_grid">
+              6x6
+            </button>
+          </div>
+        </div>
+        <button class="btn btn--start menu__startButton">Start Game</button>
+      </div>
+    </div>
+    <div class="container-gameboard">
+      <header></header>
+      <main class="game-board"></main>
+      <footer></footer>
+      <div class="modal hidden">
+        <!--
+        <h2 class="modal__header">You did it!</h2>
+        <p class="modal__subheader">Game over! Here's how you got on...</p>
+        <div class="modal__stats">
+          <div class="timer">
+            <h2 class="timer__header">Time Elapsed</h2>
+            <p class="timer__number modal__time">${time}</p>
+          </div>
+          <div class="moves">
+            <h2 class="moves__header">Moves taken</h2>
+            <p class="moves__number modal__moves">${moves}</p>
+          </div>
+        </div>
+        
+        <div class="modal__buttons">
+          <button class="buttons__restart">Restart</button>
+          <button class="buttons__newgame">Setup New Game</button>
+        </div>
+      </div>
+      -->
+      <div class="overlay hidden"></div>
+    </div>
+  </body>
+</html>

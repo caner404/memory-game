@@ -1,0 +1,366 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  //outline: 1px solid limegreen !important;
+}
+/*
+*:nth-child(2n) {
+  outline: 1px solid blue !important;
+}
+*/
+$color-dark-orange: #fda214;
+$color-dark-background: #152938;
+$color-light-bluegrey: #bcced9;
+$color-dark-blue: #304859;
+$color-grey: #f2f2f2;
+$color-white: #fcfcfc;
+$color-light-bue: #7191a5;
+$color-hover-button: #6395b8;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-dark-background;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7rem;
+}
+
+.container-gameboard {
+  width: 111rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8rem;
+  display: none;
+
+  &--active {
+    display: flex;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.gamename {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5rem;
+  color: #152938;
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 3.2rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: $color-white;
+  background-color: $color-light-bluegrey;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover:not(.btn--active):not(.btn--start),
+  &:active:not(.btn--active):not(.btn--start) {
+    background-color: $color-hover-button;
+  }
+  &--active {
+    background-color: $color-dark-blue;
+  }
+  &--start {
+    background-color: $color-dark-orange;
+
+    &:hover,
+    &:active {
+      opacity: 0.6;
+    }
+  }
+}
+
+.buttons {
+  &__restart,
+  &__newgame {
+    border: none;
+    background-color: transparent;
+    border-radius: 2.6rem;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    text-align: center;
+    padding: 1.35rem 2.9rem;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  &__restart {
+    color: #fcfcfc;
+    background-color: #fda214;
+
+    &:active,
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__newgame {
+    color: #304859;
+    background-color: #dfe7ec;
+
+    &:hover,
+    &:active {
+      color: $color-white;
+      background-color: $color-hover-button;
+    }
+  }
+}
+.circle {
+  position: relative;
+  font-weight: 700;
+  font-size: 5rem;
+  line-height: 6.9rem;
+  border-radius: 50%;
+
+  &__button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: none;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: #304859;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      background-color: $color-hover-button;
+    }
+
+    &--hidden {
+      transform: scale(0);
+    }
+  }
+  &__button,
+  &__content {
+    border-radius: 50%;
+    &--large {
+      width: 11.8rem;
+      height: 11.8rem;
+    }
+
+    &--small {
+      width: 8.2rem;
+      height: 8.2rem;
+    }
+  }
+  &__content {
+    color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      background-color: #fda214;
+    }
+
+    &--found {
+      background-color: #bcced9;
+      color: #fcfcfc;
+    }
+  }
+}
+
+.game-board {
+  display: grid;
+  gap: 1rem;
+  width: 53.2rem;
+  height: 53.2rem;
+  margin: 0 auto;
+
+  &--grid-16 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--grid-36 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
+}
+
+.timer,
+.moves {
+  background-color: #dfe7ec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  flex-basis: 25%;
+
+  &__header {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: #7191a5;
+  }
+
+  &__number {
+    color: #304859;
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 4rem;
+    text-align: right;
+  }
+
+  &-color--active {
+    color: #fff;
+  }
+
+  &-bg--active {
+    background-color: #fda214;
+  }
+
+  &-bg--tie {
+    background-color: #152938;
+  }
+}
+
+.game-title {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5rem;
+  color: $color-white;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem;
+  width: 65rem;
+  border-radius: 2rem;
+  background-color: $color-white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  &__header {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    color: $color-light-bue;
+    margin-bottom: 1rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    & > * {
+      flex: 1;
+    }
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 5rem;
+  background-color: #fff;
+  border-radius: 2rem;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65rem;
+  z-index: 100;
+  transition: all 0.5s;
+
+  &__header,
+  &__subheader {
+    font-family: "Atkinson Hyperlegible";
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+  }
+  &__header {
+    color: #152938;
+    line-height: 6rem;
+    font-size: 4.8rem;
+  }
+
+  &__subheader {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: #7191a5;
+  }
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+
+    & > * {
+      flex-basis: 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    & > * {
+      flex: 1;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  transition: all 0.5s;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
