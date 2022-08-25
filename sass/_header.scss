@@ -1,0 +1,49 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.gamename {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5rem;
+  color: $color-blue-dark;
+}
+
+.buttons {
+  &__restart,
+  &__newgame {
+    border: none;
+    background-color: transparent;
+    border-radius: 2.6rem;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    text-align: center;
+    padding: 1.35rem 2.9rem;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  &__restart {
+    color: $color-white;
+    background-color: $color-orange-dark;
+
+    &:active,
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__newgame {
+    color: $color-blue-lightdark;
+    background-color: #dfe7ec;
+
+    &:hover,
+    &:active {
+      color: $color-white;
+      background-color: $color-blue;
+    }
+  }
+}

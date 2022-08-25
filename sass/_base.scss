@@ -1,0 +1,59 @@
+//Color Variables
+$color-orange-dark: #fda214;
+$color-blue-dark: #152938;
+$color-blue-lightmint: #bcced9;
+$color-blue-lightdark: #304859;
+$color-grey: #f2f2f2;
+$color-white: #fcfcfc;
+$color-greyblue: #7191a5;
+$color-blue: #6395b8;
+
+//RESPONSIVE BREAKPOINTS
+$bp-largest: 90em; //1440px
+$bp-large: 62.5em; //1000px
+$bp-medim: 48em; //768px
+$bp-small: 23em; //375px
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-blue-dark;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7rem;
+}
+
+.container-gameboard {
+  width: 111rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8rem;
+  display: none;
+
+  &--active {
+    display: flex;
+  }
+}

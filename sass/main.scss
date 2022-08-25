@@ -9,13 +9,13 @@
   outline: 1px solid blue !important;
 }
 */
-$color-dark-orange: #fda214;
-$color-dark-background: #152938;
-$color-light-bluegrey: #bcced9;
-$color-dark-blue: #304859;
+$color-orange-dark: #fda214;
+$color-blue-dark: #152938;
+$color-blue-lightmint: #bcced9;
+$color-blue-lightdark: #304859;
 $color-grey: #f2f2f2;
 $color-white: #fcfcfc;
-$color-light-bue: #7191a5;
+$color-greyblue: #7191a5;
 $color-hover-button: #6395b8;
 
 html {
@@ -31,7 +31,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: $color-dark-background;
+  background-color: $color-blue-dark;
 }
 
 .container {
@@ -79,7 +79,7 @@ header {
   padding: 1rem 0;
   text-align: center;
   color: $color-white;
-  background-color: $color-light-bluegrey;
+  background-color: $color-blue-lightmint;
   cursor: pointer;
   transition: all 0.5s;
 
@@ -88,10 +88,10 @@ header {
     background-color: $color-hover-button;
   }
   &--active {
-    background-color: $color-dark-blue;
+    background-color: $color-blue-lightdark;
   }
   &--start {
-    background-color: $color-dark-orange;
+    background-color: $color-orange-dark;
 
     &:hover,
     &:active {
@@ -275,7 +275,7 @@ footer {
     font-weight: 700;
     font-size: 2rem;
     line-height: 2.5rem;
-    color: $color-light-bue;
+    color: $color-greyblue;
     margin-bottom: 1rem;
   }
 

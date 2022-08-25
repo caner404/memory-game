@@ -1,0 +1,68 @@
+.game-title {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5rem;
+  color: $color-white;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem;
+  width: 65rem;
+  border-radius: 2rem;
+  background-color: $color-white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  &__header {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    color: $color-greyblue;
+    margin-bottom: 1rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    & > * {
+      flex: 1;
+    }
+  }
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 3.2rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: $color-white;
+  background-color: $color-blue-lightmint;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover:not(.btn--active):not(.btn--start),
+  &:active:not(.btn--active):not(.btn--start) {
+    background-color: $color-blue;
+  }
+  &--active {
+    background-color: $color-blue-lightdark;
+  }
+  &--start {
+    background-color: $color-orange-dark;
+
+    &:hover,
+    &:active {
+      opacity: 0.6;
+    }
+  }
+}
