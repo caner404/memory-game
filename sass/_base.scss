@@ -8,12 +8,6 @@ $color-white: #fcfcfc;
 $color-greyblue: #7191a5;
 $color-blue: #6395b8;
 
-//RESPONSIVE BREAKPOINTS
-$bp-largest: 90em; //1440px
-$bp-large: 62.5em; //1000px
-$bp-medim: 48em; //768px
-$bp-small: 23em; //375px
-
 * {
   padding: 0;
   margin: 0;
@@ -43,6 +37,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 7rem;
+  width: 65rem;
 }
 
 .container-gameboard {
@@ -56,4 +51,134 @@ body {
   &--active {
     display: flex;
   }
+  @include respond(phone) {
+    width: 85vw;
+    height: 90vh;
+    max-width: 60rem;
+    gap: 0rem;
+  }
+
+  @include respond(tab-port) {
+    width: 85vw;
+    max-width: 90rem;
+    height: 100vh;
+    gap: 1rem;
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 5rem;
+  background-color: #fff;
+  border-radius: 2rem;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65rem;
+  z-index: 100;
+  transition: all 0.5s;
+
+  @include respond(phone) {
+    width: 85vw;
+    max-width: 60rem;
+    padding: 2.5rem;
+  }
+
+  @include respond(tab-port) {
+    width: 85vw;
+    max-width: 90rem;
+    padding: 2.5rem;
+  }
+
+  &__header,
+  &__subheader {
+    font-family: "Atkinson Hyperlegible";
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+  }
+  &__header {
+    color: $color-blue-dark;
+    line-height: 6rem;
+    font-size: 4.8rem;
+
+    @include respond(phone) {
+      font-size: 2.4rem;
+      line-height: 3rem;
+    }
+  }
+
+  &__subheader {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: $color-greyblue;
+
+    @include respond(phone) {
+      font-size: 1.4rem;
+      line-height: 1.7rem;
+    }
+  }
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+
+    @include respond(phone) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+      gap: 1.5rem;
+    }
+
+    & > * {
+      flex-basis: 100%;
+    }
+  }
+
+  &__timer,
+  &__moves {
+    @include respond(phone) {
+      flex-direction: row !important;
+      padding: 1rem !important;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
+
+    & > * {
+      flex: 1;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  transition: all 0.5s;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }

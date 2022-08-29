@@ -16,9 +16,12 @@ const controlGameRender = function () {
   } else {
     footerView.renderModalMultiplayer(model.state);
   }
-  //init Handler for new Page
+  //init Handler for GameboardView
+
   headerView.addHandlerRestartGame(controlRestartGame);
   headerView.addHandlerNewGame(controlNewGame);
+  headerView.addHandlerMenuMobileOpen(controlMenuOpen);
+  headerView.addHandlerMenuMobileClose(controlMenuClose);
   gameBoardView.addGamePairHandler(controlGameLogic);
 };
 
@@ -26,15 +29,30 @@ const controlRestartGame = function () {
   footerView.setMovesZero();
   footerView.setTimerZero();
   gameBoardView.resetGamePair();
-  footerView.clearTimer();
   footerView.closeModal();
-  footerView.startTimer();
+  headerView.closeModalMobile();
   model.reset();
   gameBoardView.update(model.state.gameArr);
+  if (model.isSinglePlayer()) {
+    footerView.clearTimer();
+    footerView.startTimer();
+  } else {
+    footerView.resetActivePlayer();
+  }
 };
 
 const controlNewGame = function () {
   location.reload();
+};
+
+const controlMenuOpen = function () {
+  console.log("Hi Menu Modal Open");
+  headerView.openModalMobile();
+};
+
+const controlMenuClose = function () {
+  console.log("Hi Menu Modal Close");
+  headerView.closeModalMobile();
 };
 
 const controlGameLogic = function (e) {

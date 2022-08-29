@@ -1,9 +1,17 @@
 .game-board {
   display: grid;
   gap: 1rem;
-  width: 53.2rem;
-  height: 53.2rem;
+  width: 85vw;
+  max-width: 57.2rem;
   margin: 0 auto;
+
+  @include respond(phone) {
+    max-width: 32.7rem;
+  }
+
+  @include respond(tab-port) {
+    max-width: 57.2rem;
+  }
 
   &--grid-16 {
     display: grid;
@@ -21,6 +29,16 @@
   font-size: 5rem;
   line-height: 6.9rem;
   border-radius: 50%;
+
+  @include respond(phone) {
+    font-size: 2.4rem;
+    line-height: 3rem;
+  }
+
+  @include respond(tab-port) {
+    font-size: 4.4rem;
+    line-height: 5.5rem;
+  }
 
   &__button {
     position: absolute;
@@ -47,11 +65,21 @@
     &--large {
       width: 11.8rem;
       height: 11.8rem;
+
+      @include respond(phone) {
+        width: 7.2rem;
+        height: 7.2rem;
+      }
     }
 
     &--small {
       width: 8.2rem;
       height: 8.2rem;
+
+      @include respond(phone) {
+        width: 4.6rem;
+        height: 4.6rem;
+      }
     }
   }
   &__content {

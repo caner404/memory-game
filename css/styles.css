@@ -1,3 +1,15 @@
+/*
+0-600px:       PHONE
+600- 900px     Tablet portrait
+900 - 1800     our normal styles
+1800px+        Big desktop
+
+
+$breakpoint argument choices
+- phone
+- tab-port
+- big-desktop
+*/
 * {
   padding: 0;
   margin: 0;
@@ -27,6 +39,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 7rem;
+  width: 65rem;
 }
 
 .container-gameboard {
@@ -40,93 +53,21 @@ body {
 .container-gameboard--active {
   display: flex;
 }
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+@media only screen and (max-width: 37.5em) {
+  .container-gameboard {
+    width: 85vw;
+    height: 90vh;
+    max-width: 60rem;
+    gap: 0rem;
+  }
 }
-
-.gamename {
-  font-weight: 700;
-  font-size: 4rem;
-  line-height: 5rem;
-  color: #152938;
-}
-
-.buttons__restart, .buttons__newgame {
-  border: none;
-  background-color: transparent;
-  border-radius: 2.6rem;
-  font-weight: 700;
-  font-size: 2rem;
-  line-height: 2.5rem;
-  text-align: center;
-  padding: 1.35rem 2.9rem;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-.buttons__restart {
-  color: #fcfcfc;
-  background-color: #fda214;
-}
-.buttons__restart:active, .buttons__restart:hover {
-  opacity: 0.6;
-}
-.buttons__newgame {
-  color: #304859;
-  background-color: #dfe7ec;
-}
-.buttons__newgame:hover, .buttons__newgame:active {
-  color: #fcfcfc;
-  background-color: #6395b8;
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: 3rem;
-}
-
-.timer,
-.moves {
-  background-color: #dfe7ec;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3rem 2rem;
-  border-radius: 1.5rem;
-  flex-basis: 25%;
-}
-.timer__header,
-.moves__header {
-  font-weight: 700;
-  font-size: 1.8rem;
-  line-height: 2.2rem;
-  color: #7191a5;
-}
-.timer__number,
-.moves__number {
-  color: #304859;
-  font-weight: 700;
-  font-size: 3.2rem;
-  line-height: 4rem;
-  text-align: right;
-}
-.timer-color--active,
-.moves-color--active {
-  color: #fff;
-}
-.timer-bg--active,
-.moves-bg--active {
-  background-color: #fda214;
-}
-.timer-bg--tie,
-.moves-bg--tie {
-  background-color: #152938;
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .container-gameboard {
+    width: 85vw;
+    max-width: 90rem;
+    height: 100vh;
+    gap: 1rem;
+  }
 }
 
 .modal {
@@ -146,6 +87,20 @@ footer {
   z-index: 100;
   transition: all 0.5s;
 }
+@media only screen and (max-width: 37.5em) {
+  .modal {
+    width: 85vw;
+    max-width: 60rem;
+    padding: 2.5rem;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .modal {
+    width: 85vw;
+    max-width: 90rem;
+    padding: 2.5rem;
+  }
+}
 .modal__header, .modal__subheader {
   font-family: "Atkinson Hyperlegible";
   font-style: normal;
@@ -157,10 +112,22 @@ footer {
   line-height: 6rem;
   font-size: 4.8rem;
 }
+@media only screen and (max-width: 37.5em) {
+  .modal__header {
+    font-size: 2.4rem;
+    line-height: 3rem;
+  }
+}
 .modal__subheader {
   font-size: 1.8rem;
   line-height: 2.2rem;
   color: #7191a5;
+}
+@media only screen and (max-width: 37.5em) {
+  .modal__subheader {
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+  }
 }
 .modal__stats {
   display: flex;
@@ -168,14 +135,34 @@ footer {
   align-items: center;
   gap: 3rem;
 }
+@media only screen and (max-width: 37.5em) {
+  .modal__stats {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    gap: 1.5rem;
+  }
+}
 .modal__stats > * {
   flex-basis: 100%;
+}
+@media only screen and (max-width: 37.5em) {
+  .modal__timer, .modal__moves {
+    flex-direction: row !important;
+    padding: 1rem !important;
+  }
 }
 .modal__buttons {
   display: flex;
   align-items: center;
   width: 100%;
   gap: 1rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .modal__buttons {
+    flex-direction: column;
+  }
 }
 .modal__buttons > * {
   flex: 1;
@@ -197,6 +184,180 @@ footer {
   opacity: 0;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.gamename {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 5rem;
+  color: #152938;
+}
+@media only screen and (max-width: 37.5em) {
+  .gamename {
+    font-size: 2.4rem;
+    line-height: 3rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  border-radius: 2.6rem;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  text-align: center;
+  padding: 1.35rem 2.9rem;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.button__restart, .button__menu {
+  color: #fcfcfc;
+  background-color: #fda214;
+}
+.button__restart:active, .button__restart:hover, .button__menu:active, .button__menu:hover {
+  opacity: 0.6;
+}
+.button__newgame, .button__resume {
+  color: #304859;
+  background-color: #dfe7ec;
+}
+.button__newgame:hover, .button__newgame:active, .button__resume:hover, .button__resume:active {
+  color: #fcfcfc;
+  background-color: #6395b8;
+}
+.button--hide {
+  display: block;
+  visibility: visible;
+}
+@media only screen and (max-width: 37.5em) {
+  .button--hide {
+    display: none;
+    visibility: hidden;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .button--hide {
+    display: block;
+    visibility: visible;
+  }
+}
+.button__menu {
+  display: none;
+  visibility: hidden;
+}
+@media only screen and (max-width: 37.5em) {
+  .button__menu {
+    display: block;
+    visibility: visible;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    padding: 1rem 2rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .button__restart, .button__newgame, .button__resume {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    width: 100%;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
+}
+
+.timer,
+.moves {
+  background-color: #dfe7ec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  gap: 5rem;
+  flex-basis: 25%;
+}
+@media only screen and (max-width: 37.5em) {
+  .timer,
+.moves {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    flex: 1;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .timer,
+.moves {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    flex: 1;
+    text-align: center;
+  }
+}
+.timer__header,
+.moves__header {
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  color: #7191a5;
+}
+@media only screen and (max-width: 37.5em) {
+  .timer__header,
+.moves__header {
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+  }
+}
+.timer__number,
+.moves__number {
+  color: #304859;
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 4rem;
+  text-align: right;
+}
+@media only screen and (max-width: 37.5em) {
+  .timer__number,
+.moves__number {
+    font-size: 2.4rem;
+    line-height: 3rem;
+  }
+}
+.timer-color--active,
+.moves-color--active {
+  color: #fff;
+}
+.timer-bg--active,
+.moves-bg--active {
+  background-color: #fda214;
+}
+.timer-bg--tie,
+.moves-bg--tie {
+  background-color: #152938;
+}
+
 .game-title {
   font-weight: 700;
   font-size: 4rem;
@@ -209,11 +370,22 @@ footer {
   flex-direction: column;
   justify-content: center;
   gap: 3rem;
-  padding: 4rem;
-  width: 65rem;
+  padding: 2rem;
+  width: 85vw;
+  max-width: 65rem;
   border-radius: 2rem;
   background-color: #fcfcfc;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+@media only screen and (max-width: 37.5em) {
+  .menu {
+    max-width: 60rem;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .menu {
+    max-width: 90rem;
+  }
 }
 .menu__header {
   font-weight: 700;
@@ -221,6 +393,18 @@ footer {
   line-height: 2.5rem;
   color: #7191a5;
   margin-bottom: 1rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .menu__header {
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .menu__header {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
 }
 .menu__buttons {
   display: flex;
@@ -235,16 +419,27 @@ footer {
 .btn {
   border: none;
   background-color: transparent;
-  border-radius: 2rem;
+  border-radius: 2.6rem;
   font-weight: 700;
   font-size: 2.6rem;
   line-height: 3.2rem;
   padding: 1rem 0;
-  text-align: center;
   color: #fcfcfc;
   background-color: #bcced9;
   cursor: pointer;
   transition: all 0.5s;
+}
+@media only screen and (max-width: 37.5em) {
+  .btn {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .btn {
+    font-size: 2.6rem;
+    line-height: 3.2rem;
+  }
 }
 .btn:hover:not(.btn--active):not(.btn--start), .btn:active:not(.btn--active):not(.btn--start) {
   background-color: #6395b8;
@@ -262,9 +457,19 @@ footer {
 .game-board {
   display: grid;
   gap: 1rem;
-  width: 53.2rem;
-  height: 53.2rem;
+  width: 85vw;
+  max-width: 57.2rem;
   margin: 0 auto;
+}
+@media only screen and (max-width: 37.5em) {
+  .game-board {
+    max-width: 32.7rem;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .game-board {
+    max-width: 57.2rem;
+  }
 }
 .game-board--grid-16 {
   display: grid;
@@ -280,6 +485,18 @@ footer {
   font-size: 5rem;
   line-height: 6.9rem;
   border-radius: 50%;
+}
+@media only screen and (max-width: 37.5em) {
+  .circle {
+    font-size: 2.4rem;
+    line-height: 3rem;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .circle {
+    font-size: 4.4rem;
+    line-height: 5.5rem;
+  }
 }
 .circle__button {
   position: absolute;
@@ -304,9 +521,21 @@ footer {
   width: 11.8rem;
   height: 11.8rem;
 }
+@media only screen and (max-width: 37.5em) {
+  .circle__button--large, .circle__content--large {
+    width: 7.2rem;
+    height: 7.2rem;
+  }
+}
 .circle__button--small, .circle__content--small {
   width: 8.2rem;
   height: 8.2rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .circle__button--small, .circle__content--small {
+    width: 4.6rem;
+    height: 4.6rem;
+  }
 }
 .circle__content {
   color: #f2f2f2;

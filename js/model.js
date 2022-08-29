@@ -98,16 +98,27 @@ const initgamePairs = function () {
     .sort((a, b) => a.sort - b.sort)
     .map(({ gameContent }) => gameContent);
 
-  //init players equal to playerCount
-  for (let i = 0; i < state.playerCount; i++) {
-    state.players.push({
-      moves: 0,
-      playerNumber: i + 1,
-      isCurrentPlayer: false,
-    });
+  if (state.players.length <= 0) {
+    for (let i = 0; i < state.playerCount; i++) {
+      state.players.push({
+        moves: 0,
+        playerNumber: i + 1,
+        isCurrentPlayer: false,
+      });
+    }
+  } else {
+    state.players = [];
+    for (let i = 0; i < state.playerCount; i++) {
+      state.players.push({
+        moves: 0,
+        playerNumber: i + 1,
+        isCurrentPlayer: false,
+      });
+    }
   }
   state.players[0].isCurrentPlayer = true;
   console.log(state);
+  console.log(state.players);
 };
 
 export const initGameState = function (gameSettings) {

@@ -10,11 +10,20 @@
   flex-direction: column;
   justify-content: center;
   gap: 3rem;
-  padding: 4rem;
-  width: 65rem;
+  padding: 2rem;
+  width: 85vw;
+  max-width: 65rem;
   border-radius: 2rem;
   background-color: $color-white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  @include respond(phone) {
+    max-width: 60rem;
+  }
+
+  @include respond(tab-port) {
+    max-width: 90rem;
+  }
 
   &__header {
     font-weight: 700;
@@ -22,6 +31,16 @@
     line-height: 2.5rem;
     color: $color-greyblue;
     margin-bottom: 1rem;
+
+    @include respond(phone) {
+      font-size: 1.5rem;
+      line-height: 1.9rem;
+    }
+
+    @include respond(tab-port) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
   }
 
   &__buttons {
@@ -39,16 +58,25 @@
 .btn {
   border: none;
   background-color: transparent;
-  border-radius: 2rem;
+  border-radius: 2.6rem;
   font-weight: 700;
   font-size: 2.6rem;
   line-height: 3.2rem;
   padding: 1rem 0;
-  text-align: center;
   color: $color-white;
   background-color: $color-blue-lightmint;
   cursor: pointer;
   transition: all 0.5s;
+
+  @include respond(phone) {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+
+  @include respond(tab-port) {
+    font-size: 2.6rem;
+    line-height: 3.2rem;
+  }
 
   &:hover:not(.btn--active):not(.btn--start),
   &:active:not(.btn--active):not(.btn--start) {

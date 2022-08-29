@@ -9,14 +9,14 @@ class FooterView {
           ? this.generateMarkupMultiplayer(state)
           : this.generateMarkupSingleplayer(state)
       }
-  </footer>;
-  <div class="modal hidden">
+  </footer>
+  <div class="modal modal__end hidden">
     <div class="modal__buttons">
-        <button class="buttons__restart">Restart</button>
-        <button class="buttons__newgame">Setup New Game</button>
+        <button class="button button__restart">Restart</button>
+        <button class="button button__newgame">Setup New Game</button>
     </div>
   </div>
-  <div class="overlay hidden"></div>`;
+  <div class="overlay overlay__end hidden"></div>`;
   }
 
   generateMarkupMultiplayer(state) {
@@ -51,17 +51,16 @@ class FooterView {
     const markup = `<h2 class="modal__header">You did it!</h2>
     <p class="modal__subheader">Game over! Here's how you got on...</p>
     <div class="modal__stats">
-      <div class="timer">
+      <div class="timer modal__timer">
         <h2 class="timer__header">Time Elapsed</h2>
         <p class="timer__number modal__time">0</p>
       </div>
-      <div class="moves">
+      <div class="moves modal__moves">
         <h2 class="moves__header">Moves taken</h2>
-        <p class="moves__number modal__moves">0</p>
+        <p class="moves__number modal__move">0</p>
       </div>
-    </div>
-    <div>`;
-    const modal = document.querySelector(".modal");
+    </div>`;
+    const modal = document.querySelector(".modal__end");
     modal.insertAdjacentHTML("afterbegin", markup);
   }
 
@@ -77,39 +76,46 @@ class FooterView {
                 </div>`;
         })
         .join("")}`;
-    const modal = document.querySelector(".modal");
+    const modal = document.querySelector(".modal__end");
     modal.insertAdjacentHTML("afterbegin", markup);
   }
 
   updateModalSinglePlayer(time, moves) {
     document.querySelector(".modal__time").textContent = time;
-    document.querySelector(".modal__moves").textContent = moves;
+    document.querySelector(".modal__move").textContent = moves;
   }
 
   updateModalMultiplayer(playersSorted) {
     let isTie = false;
+    const highestPlayer = playersSorted[0];
+    const moves = document.querySelectorAll(".modal__moves");
     if (playersSorted[0].moves === playersSorted[1].moves) {
       document.querySelector(".modal__header").textContent = `It's a tie`;
       isTie = true;
     } else {
       document.querySelector(
         ".modal__header"
-      ).textContent = `Player ${playersSorted[0].playerNumber} wins!`;
+      ).textContent = `Player ${highestPlayer.playerNumber} wins!`;
+      moves[0].classList.add("moves-bg--tie");
+      moves[0].children[0].textContent = `Player ${highestPlayer.playerNumber} (Winner!)`;
+      moves[0].children[0].classList.add("moves-color--active");
+      moves[0].children[1].classList.add("moves-color--active");
     }
-    const moves = document.querySelectorAll(".modal__moves");
     let i = 0;
-    const highestPlayer = playersSorted[0];
     moves.forEach((move) => {
-      if (playersSorted[i].moves === highestPlayer.moves && isTie) {
-        move.classList.add("moves-bg--tie");
-        move.children[0].textContent = `Player ${playersSorted[i].playerNumber}(Winner!)`;
-        move.children[0].classList.add("moves-color--active");
-        move.children[1].classList.add("moves-color--active");
-      } else {
-        move.children[0].textContent = `Player ${playersSorted[i].playerNumber}`;
+      if (i <= playersSorted.length) {
+        if (playersSorted[i].moves === highestPlayer.moves && isTie) {
+          move.classList.add("moves-bg--tie");
+          move.children[0].textContent = `Player ${playersSorted[i].playerNumber}(Winner!)`;
+          move.children[0].classList.add("moves-color--active");
+          move.children[1].classList.add("moves-color--active");
+        } else {
+          if (playersSorted[i] !== highestPlayer)
+            move.children[0].textContent = `Player ${playersSorted[i].playerNumber}`;
+        }
+        move.children[1].textContent = `${playersSorted[i].moves} Pairs `;
+        i++;
       }
-      move.children[1].textContent = `${playersSorted[i].moves} Pairs`;
-      i++;
     });
   }
   setMovesZero() {
@@ -142,13 +148,15 @@ class FooterView {
     let seconds = 0;
     this.timerInterval = setInterval(() => {
       const timerEL = that.getTimerElement();
-      seconds++;
-      let hrs = Math.floor(seconds / 3600);
-      let mins = Math.floor((seconds - hrs * 3600) / 60);
-      var secs = seconds % 60;
-      timerEL.textContent = `${that.leadingZero(mins)}:${that.leadingZero(
-        secs
-      )}`;
+      if (timerEL != null) {
+        seconds++;
+        let hrs = Math.floor(seconds / 3600);
+        let mins = Math.floor((seconds - hrs * 3600) / 60);
+        var secs = seconds % 60;
+        timerEL.textContent = `${that.leadingZero(mins)}:${that.leadingZero(
+          secs
+        )}`;
+      }
     }, 1000);
     return this.timerInterval;
   }
@@ -164,7 +172,7 @@ class FooterView {
 
   updateModal(time, moves) {
     document.querySelector(".modal__time").textContent = time;
-    document.querySelector(".modal__moves").textContent = moves;
+    document.querySelector(".modal__move").textContent = moves;
   }
 
   clearTimer() {
@@ -172,15 +180,15 @@ class FooterView {
   }
 
   closeModal() {
-    const modal = document.querySelector(".modal");
-    const overlay = document.querySelector(".overlay");
+    const modal = document.querySelector(".modal__end");
+    const overlay = document.querySelector(".overlay__end");
     modal.classList.add("hidden");
     overlay.classList.add("hidden");
   }
 
   openModal() {
-    const modal = document.querySelector(".modal");
-    const overlay = document.querySelector(".overlay");
+    const modal = document.querySelector(".modal__end");
+    const overlay = document.querySelector(".overlay__end");
     modal.classList.remove("hidden");
     overlay.classList.remove("hidden");
   }
@@ -215,6 +223,19 @@ class FooterView {
       for (let i = 0; i < firstplayer.children.length; i++) {
         firstplayer.children[i].classList.add("moves-color--active");
       }
+    }
+  }
+
+  resetActivePlayer() {
+    const currentPlayer = document.querySelector(".moves-bg--active");
+    currentPlayer.classList.remove("moves-bg--active");
+    for (let i = 0; i < currentPlayer.children.length; i++) {
+      currentPlayer.children[i].classList.remove("moves-color--active");
+    }
+    const firstplayer = document.querySelector(".moves:first-child");
+    firstplayer.classList.add("moves-bg--active");
+    for (let i = 0; i < firstplayer.children.length; i++) {
+      firstplayer.children[i].classList.add("moves-color--active");
     }
   }
 }
