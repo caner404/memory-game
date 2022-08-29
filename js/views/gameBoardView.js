@@ -24,7 +24,7 @@ class GameBoardView {
           }</div>
           </div>`;
         })
-        .join("")};
+        .join("")}
     </main>`;
   }
   addGamePairHandler(handler) {

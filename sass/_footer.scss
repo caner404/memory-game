@@ -4,6 +4,10 @@ footer {
   align-items: center;
   width: 100%;
   gap: 3rem;
+
+  @include respond(phone) {
+    gap: 1.5rem;
+  }
 }
 
 .timer,

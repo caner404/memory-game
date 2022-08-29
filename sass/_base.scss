@@ -52,7 +52,7 @@ body {
     display: flex;
   }
   @include respond(phone) {
-    width: 85vw;
+    width: 90vw;
     height: 90vh;
     max-width: 60rem;
     gap: 0rem;

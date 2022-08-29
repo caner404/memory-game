@@ -55,7 +55,7 @@ body {
 }
 @media only screen and (max-width: 37.5em) {
   .container-gameboard {
-    width: 85vw;
+    width: 90vw;
     height: 90vh;
     max-width: 60rem;
     gap: 0rem;
@@ -282,6 +282,11 @@ footer {
   width: 100%;
   gap: 3rem;
 }
+@media only screen and (max-width: 37.5em) {
+  footer {
+    gap: 1.5rem;
+  }
+}
 
 .timer,
 .moves {
@@ -457,9 +462,9 @@ footer {
 .game-board {
   display: grid;
   gap: 1rem;
-  width: 85vw;
+  width: 90vw;
   max-width: 57.2rem;
-  margin: 0 auto;
+  justify-items: center;
 }
 @media only screen and (max-width: 37.5em) {
   .game-board {
