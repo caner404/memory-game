@@ -41,6 +41,20 @@ body {
   gap: 7rem;
   width: 65rem;
 }
+@media only screen and (max-width: 37.5em) {
+  .container {
+    width: 90vw;
+    height: 90vh;
+    max-width: 60rem;
+  }
+}
+@media only screen and (min-width: 37.5em) and (max-width: 75em) {
+  .container {
+    width: 85vw;
+    max-width: 90rem;
+    height: 100vh;
+  }
+}
 
 .container-gameboard {
   width: 111rem;

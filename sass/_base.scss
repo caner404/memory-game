@@ -38,6 +38,18 @@ body {
   justify-content: center;
   gap: 7rem;
   width: 65rem;
+
+  @include respond(phone) {
+    width: 90vw;
+    height: 90vh;
+    max-width: 60rem;
+  }
+
+  @include respond(tab-port) {
+    width: 85vw;
+    max-width: 90rem;
+    height: 100vh;
+  }
 }
 
 .container-gameboard {
