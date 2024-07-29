@@ -215,7 +215,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [issues-shield]: https://img.shields.io/github/issues/caner404/memory-game.svg?style=for-the-badge
 [issues-url]: https://github.com/caner404/memory-game/issues
 [license-shield]: https://img.shields.io/github/license/caner404/memory-game.svg?style=for-the-badge
-[license-url]: https://github.com/caner404/memory-game/blob/master/LICENSE.txt
+[license-url]: https://github.com/caner404/memory-game/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 
