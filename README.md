@@ -118,7 +118,7 @@ To get a local copy up and running follow these simple steps.
    ```sh
    npm install
    ```
-3. Open the ```index.html```
+3. Open the ```index.html``` with your browser of choice
 
   <br>
   changes you make in the SASS file will automatically be compiled into CSS 
